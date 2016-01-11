@@ -1,0 +1,14 @@
+#!/bin/bash
+exec > Makefile
+CPPFILES=( $(find . -name "*.cpp") $(find . -name "*.cc") )
+echo "all: tournament"
+echo ""
+echo "tournament: ${CPPFILES[@]/%/.o}"
+echo -e "\tg++ -std=c++11 -o tournament ${CPPFILES[@]/%/.o}"
+for CPPFILE in ${CPPFILES[@]}
+do
+   g++ -MM -I. ${CPPFILE} -MT ${CPPFILE}.o
+   echo -e "\tg++ -std=c++11 -I. -c ${CPPFILE} -o ${CPPFILE}.o"
+done
+echo "clean:"
+echo -e "\trm -rf tournament ${CPPFILES[@]/%/.o}"
