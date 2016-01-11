@@ -1,5 +1,6 @@
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
 #include "actions/action.h"
 #include "actions/move.h"
@@ -17,6 +18,7 @@ using namespace infYYYYYY;
 
 action *masterrobot::performaction(const vector<action *> &possibleactions) {
     actions::move *moveaction = NULL;
+    cout << "Robot infYYYYYY" << endl;
     for (auto currentaction: possibleactions) {
         if (dynamic_cast<actions::move *>(currentaction)) {
             moveaction = dynamic_cast<actions::move *>(currentaction);

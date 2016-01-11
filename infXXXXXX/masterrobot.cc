@@ -1,5 +1,6 @@
 #include <vector>
 #include <algorithm>
+#include <iostream>
 
 #include "actions/action.h"
 #include "actions/mine.h"
@@ -52,6 +53,7 @@ action *masterrobot::performaction(const vector<action *> &possibleactions) {
     }
     */
     auto mr = new masterrobot;
+    cout << "Robot infXXXXXX" << endl;
     auto it = find_if(possibleactions.begin(), possibleactions.end(), [](action *a) {
         return dynamic_cast<actions::create *>(a) != NULL;
     });
